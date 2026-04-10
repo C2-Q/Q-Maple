@@ -14,7 +14,7 @@ This repository is meant to support a positioning paper and early experimentatio
 
 ## Workflow At A Glance
 
-![Q-Maple workflow overview](docs/figures/workflow_overview.svg)
+![Q-Maple workflow overview](docs/figures/workflow_overview_readme.svg)
 
 ## What Q-Maple Is
 

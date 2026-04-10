@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620" viewBox="0 0 1280 620" role="img" aria-labelledby="title desc">
+  <title id="title">Q-Maple workflow overview</title>
+  <desc id="desc">A simple diagram showing workflow specification, backend profiles, and a small cost model flowing into the Q-Maple placement engine and producing placement guidance.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbf8; }
+      .panel { fill: #ffffff; stroke: #d7ddd3; stroke-width: 1.5; }
+      .workflow { fill: #eef4ff; stroke: #9db7e8; stroke-width: 1.5; }
+      .backends { fill: #eef8f1; stroke: #94c1a0; stroke-width: 1.5; }
+      .cost { fill: #fff6e8; stroke: #dbb77c; stroke-width: 1.5; }
+      .engine { fill: #f4f0ff; stroke: #a796d8; stroke-width: 1.8; }
+      .output { fill: #f2fbf8; stroke: #7cb9a6; stroke-width: 1.8; }
+      .title { font: 600 26px Arial, Helvetica, sans-serif; fill: #243028; }
+      .subtitle { font: 14px Arial, Helvetica, sans-serif; fill: #5d6c63; }
+      .card-title { font: 600 19px Arial, Helvetica, sans-serif; fill: #2b3a30; }
+      .card-text { font: 14px Arial, Helvetica, sans-serif; fill: #425248; }
+      .mono { font: 13px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; fill: #415046; }
+      .arrow { stroke: #68776d; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .note { font: 13px Arial, Helvetica, sans-serif; fill: #5d6c63; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#68776d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="620"/>
+  <rect class="panel" x="24" y="24" width="1232" height="572" rx="20" ry="20"/>
+
+  <text class="title" x="56" y="68">Q-Maple placement flow</text>
+  <text class="subtitle" x="56" y="94">Small, interpretable placement guidance for workflows whose execution regions are already defined.</text>
+
+  <rect class="workflow" x="56" y="132" width="420" height="140" rx="14" ry="14"/>
+  <text class="card-title" x="80" y="166">1. Workflow specification</text>
+  <text class="card-text" x="80" y="194">Predefined execution regions:</text>
+  <text class="mono" x="80" y="220">r1  compute</text>
+  <text class="mono" x="80" y="242">r2  measure-feedback</text>
+  <text class="mono" x="80" y="264">r3  scalable-compute</text>
+
+  <rect class="backends" x="56" y="282" width="420" height="160" rx="14" ry="14"/>
+  <text class="card-title" x="80" y="316">2. Backend profiles</text>
+  <text class="card-text" x="80" y="344">Example backend styles:</text>
+  <text class="mono" x="80" y="370">SC   superconducting</text>
+  <text class="mono" x="80" y="392">NA   neutral atom</text>
+  <text class="mono" x="80" y="414">TI   trapped ion</text>
+  <text class="mono" x="80" y="436">PH   photonic</text>
+
+  <rect class="cost" x="56" y="460" width="340" height="112" rx="14" ry="14"/>
+  <text class="card-title" x="80" y="494">3. Cost model</text>
+  <text class="card-text" x="80" y="522">Transparent scoring terms:</text>
+  <text class="card-text" x="80" y="546">compute fit + structural fit</text>
+  <text class="card-text" x="80" y="566">- communication penalty</text>
+
+  <rect class="engine" x="520" y="206" width="354" height="194" rx="16" ry="16"/>
+  <text class="card-title" x="548" y="242">Q-Maple placement engine</text>
+  <text class="card-text" x="548" y="274">Read the region annotations.</text>
+  <text class="card-text" x="548" y="302">Score each region against each backend.</text>
+  <text class="card-text" x="548" y="330">Rank candidates using a small model.</text>
+  <text class="card-text" x="548" y="358">Return guidance, not scheduling decisions.</text>
+  <text class="card-text" x="548" y="386">Keep the output easy to inspect.</text>
+
+  <rect class="output" x="946" y="228" width="276" height="150" rx="16" ry="16"/>
+  <text class="card-title" x="972" y="264">Placement guidance</text>
+  <text class="card-text" x="972" y="296">Recommended backend</text>
+  <text class="card-text" x="972" y="320">for each region</text>
+  <text class="card-text" x="972" y="348">Ranked candidate list</text>
+  <text class="card-text" x="972" y="372">Short plain-language reason</text>
+
+  <path class="arrow" marker-end="url(#arrowhead)" d="M 476 196 C 500 196, 506 224, 520 236"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M 476 360 C 500 360, 506 304, 520 304"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M 396 516 C 452 516, 474 372, 520 372"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M 874 304 C 908 304, 920 304, 946 304"/>
+
+  <text class="note" x="520" y="454">Current scope: regions are assumed to already exist in the workflow description.</text>
+  <text class="note" x="520" y="478">Out of scope here: provider-side scheduling and automatic semantic partitioning.</text>
+</svg>

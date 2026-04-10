@@ -1,0 +1,57 @@
+{
+  "workflow_id": "adaptive_calibration_demo",
+  "description": "Illustrative heterogeneous workflow with predefined execution regions.",
+  "annotations": {
+    "source": "repository example",
+    "region_definition": "manual",
+    "notes": "Execution regions are provided by the workflow author; no automatic partitioning is implied."
+  },
+  "regions": [
+    {
+      "id": "r1_compute",
+      "label": "Variational preparation",
+      "region_type": "compute",
+      "dependencies": [],
+      "annotations": {
+        "required_qubits": 48,
+        "circuit_depth": 80,
+        "requires_fast_feedback": false,
+        "preferred_connectivity": "grid",
+        "scalability_target": "medium",
+        "shot_volume": 2000
+      }
+    },
+    {
+      "id": "r2_feedback",
+      "label": "Mid-circuit measure and correction",
+      "region_type": "measure_feedback",
+      "dependencies": [
+        "r1_compute"
+      ],
+      "annotations": {
+        "required_qubits": 20,
+        "circuit_depth": 40,
+        "requires_fast_feedback": true,
+        "preferred_connectivity": "all_to_all",
+        "scalability_target": "low",
+        "shot_volume": 4000
+      }
+    },
+    {
+      "id": "r3_scale",
+      "label": "Wide parameter sweep",
+      "region_type": "scalable_compute",
+      "dependencies": [
+        "r2_feedback"
+      ],
+      "annotations": {
+        "required_qubits": 180,
+        "circuit_depth": 50,
+        "requires_fast_feedback": false,
+        "preferred_connectivity": "reconfigurable",
+        "scalability_target": "high",
+        "shot_volume": 12000
+      }
+    }
+  ]
+}

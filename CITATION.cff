@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Q-Maple, please cite this repository and the associated paper."
+title: "Q-Maple: Capability-Driven Placement Guidance for Heterogeneous Quantum Workflows"
+type: software
+version: 0.1.0
+date-released: 2026-04-10
+license: MIT
+authors:
+  - family-names: "Ye"
+    given-names: "Bossy"
+abstract: "Early research prototype for capability-driven placement guidance over predefined execution regions in heterogeneous quantum workflows."
+repository-code: "https://github.com/C2-Q/Q-Maple.git"

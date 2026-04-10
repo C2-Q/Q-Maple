@@ -1,0 +1,80 @@
+{
+  "backends": [
+    {
+      "id": "SC",
+      "display_name": "Reference superconducting backend",
+      "style": "superconducting",
+      "compute": {
+        "max_qubits": 127,
+        "depth_budget": 120,
+        "measurement_speed": "high"
+      },
+      "structural": {
+        "connectivity": "grid",
+        "supports_feedback": true,
+        "scalability": "medium"
+      },
+      "communication": {
+        "classical_latency_ms": 4.0,
+        "remote_link_penalty": 0.2
+      }
+    },
+    {
+      "id": "NA",
+      "display_name": "Reference neutral-atom backend",
+      "style": "neutral_atom",
+      "compute": {
+        "max_qubits": 256,
+        "depth_budget": 90,
+        "measurement_speed": "medium"
+      },
+      "structural": {
+        "connectivity": "reconfigurable",
+        "supports_feedback": false,
+        "scalability": "high"
+      },
+      "communication": {
+        "classical_latency_ms": 12.0,
+        "remote_link_penalty": 0.25
+      }
+    },
+    {
+      "id": "TI",
+      "display_name": "Reference trapped-ion backend",
+      "style": "trapped_ion",
+      "compute": {
+        "max_qubits": 40,
+        "depth_budget": 260,
+        "measurement_speed": "low"
+      },
+      "structural": {
+        "connectivity": "all_to_all",
+        "supports_feedback": true,
+        "scalability": "low"
+      },
+      "communication": {
+        "classical_latency_ms": 18.0,
+        "remote_link_penalty": 0.35
+      }
+    },
+    {
+      "id": "PH",
+      "display_name": "Reference photonic backend",
+      "style": "photonic",
+      "compute": {
+        "max_qubits": 72,
+        "depth_budget": 70,
+        "measurement_speed": "medium"
+      },
+      "structural": {
+        "connectivity": "broadcast",
+        "supports_feedback": false,
+        "scalability": "medium"
+      },
+      "communication": {
+        "classical_latency_ms": 7.0,
+        "remote_link_penalty": 0.1
+      }
+    }
+  ]
+}

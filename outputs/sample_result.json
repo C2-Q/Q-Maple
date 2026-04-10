@@ -1,0 +1,133 @@
+{
+  "workflow_id": "adaptive_calibration_demo",
+  "description": "Illustrative heterogeneous workflow with predefined execution regions.",
+  "assumptions": [
+    "Execution regions are assumed to be predefined in the workflow specification.",
+    "Scores are comparative guidance from stylized profiles, not provider-side schedules, reservations, or execution measurements."
+  ],
+  "recommendations": [
+    {
+      "region_id": "r1_compute",
+      "region_label": "Variational preparation",
+      "region_type": "compute",
+      "recommended_backend": "SC",
+      "reason": "SC offers a strong fit for the qubit and depth request and aligns with the preferred grid connectivity.",
+      "candidates": [
+        {
+          "backend_id": "SC",
+          "style": "superconducting",
+          "compute_fit": 1.0,
+          "structural_fit": 1.0,
+          "communication_penalty": 0.18,
+          "total_score": 0.82
+        },
+        {
+          "backend_id": "NA",
+          "style": "neutral_atom",
+          "compute_fit": 1.0,
+          "structural_fit": 0.93,
+          "communication_penalty": 0.34,
+          "total_score": 0.78
+        },
+        {
+          "backend_id": "PH",
+          "style": "photonic",
+          "compute_fit": 0.94,
+          "structural_fit": 0.83,
+          "communication_penalty": 0.17,
+          "total_score": 0.73
+        },
+        {
+          "backend_id": "TI",
+          "style": "trapped_ion",
+          "compute_fit": 0.92,
+          "structural_fit": 0.72,
+          "communication_penalty": 0.5,
+          "total_score": 0.63
+        }
+      ]
+    },
+    {
+      "region_id": "r2_feedback",
+      "region_label": "Mid-circuit measure and correction",
+      "region_type": "measure_feedback",
+      "recommended_backend": "SC",
+      "reason": "SC offers a strong fit for the qubit and depth request and supports feedback-oriented execution.",
+      "candidates": [
+        {
+          "backend_id": "SC",
+          "style": "superconducting",
+          "compute_fit": 1.0,
+          "structural_fit": 0.87,
+          "communication_penalty": 0.17,
+          "total_score": 0.78
+        },
+        {
+          "backend_id": "TI",
+          "style": "trapped_ion",
+          "compute_fit": 0.8,
+          "structural_fit": 1.0,
+          "communication_penalty": 0.61,
+          "total_score": 0.66
+        },
+        {
+          "backend_id": "NA",
+          "style": "neutral_atom",
+          "compute_fit": 0.9,
+          "structural_fit": 0.6,
+          "communication_penalty": 0.41,
+          "total_score": 0.6
+        },
+        {
+          "backend_id": "PH",
+          "style": "photonic",
+          "compute_fit": 0.9,
+          "structural_fit": 0.48,
+          "communication_penalty": 0.23,
+          "total_score": 0.59
+        }
+      ]
+    },
+    {
+      "region_id": "r3_scale",
+      "region_label": "Wide parameter sweep",
+      "region_type": "scalable_compute",
+      "recommended_backend": "NA",
+      "reason": "NA offers a strong fit for the qubit and depth request and aligns with the preferred reconfigurable connectivity.",
+      "candidates": [
+        {
+          "backend_id": "NA",
+          "style": "neutral_atom",
+          "compute_fit": 1.0,
+          "structural_fit": 1.0,
+          "communication_penalty": 0.34,
+          "total_score": 0.8
+        },
+        {
+          "backend_id": "SC",
+          "style": "superconducting",
+          "compute_fit": 0.85,
+          "structural_fit": 0.77,
+          "communication_penalty": 0.18,
+          "total_score": 0.67
+        },
+        {
+          "backend_id": "PH",
+          "style": "photonic",
+          "compute_fit": 0.7,
+          "structural_fit": 0.72,
+          "communication_penalty": 0.17,
+          "total_score": 0.58
+        },
+        {
+          "backend_id": "TI",
+          "style": "trapped_ion",
+          "compute_fit": 0.61,
+          "structural_fit": 0.69,
+          "communication_penalty": 0.5,
+          "total_score": 0.47
+        }
+      ]
+    }
+  ]
+}

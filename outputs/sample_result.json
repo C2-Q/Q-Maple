@@ -1,8 +1,9 @@
 {
   "workflow_id": "adaptive_calibration_demo",
-  "description": "Illustrative heterogeneous workflow with predefined execution regions.",
+  "description": "Illustrative Q-Maple workflow specification with predefined execution regions.",
   "assumptions": [
-    "Execution regions are assumed to be predefined in the workflow specification.",
+    "Execution regions are assumed to be explicitly specified in the Q-Maple workflow specification.",
+    "This prototype consumes a placement-oriented specification rather than deriving regions from raw workflows.",
     "Scores are comparative guidance from stylized profiles, not provider-side schedules, reservations, or execution measurements."
   ],
   "recommendations": [

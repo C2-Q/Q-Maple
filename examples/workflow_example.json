@@ -1,10 +1,10 @@
 {
   "workflow_id": "adaptive_calibration_demo",
-  "description": "Illustrative heterogeneous workflow with predefined execution regions.",
+  "description": "Illustrative Q-Maple workflow specification with predefined execution regions.",
   "annotations": {
     "source": "repository example",
     "region_definition": "manual",
-    "notes": "Execution regions are provided by the workflow author; no automatic partitioning is implied."
+    "notes": "This example is a manually authored, placement-oriented Q-Maple specification. Execution regions are provided explicitly; no automatic partitioning is implied."
   },
   "regions": [
     {

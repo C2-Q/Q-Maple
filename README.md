@@ -2,117 +2,75 @@
 
 Q-Maple is a small research prototype for capability-driven placement guidance over heterogeneous quantum workflows.
 
-It reads:
-
-1. a workflow specification
-2. backend capability profiles
-3. a simple cost model
-
-It produces placement guidance for each predefined execution region in the workflow, along with short explanations.
-
-This repository is meant to support a positioning paper and early experimentation. It is intentionally small.
-
-## Workflow At A Glance
+The current prototype starts from an explicit Q-Maple workflow specification: a lightweight, placement-oriented intermediate representation in which execution regions and annotations are already provided.
 
 ![Q-Maple workflow overview](docs/figures/workflow_overview_readme.png)
 
-## What Q-Maple Is
+## What It Does
 
-Q-Maple focuses on workflow-oriented placement guidance.
+Q-Maple reads:
 
-- It compares execution regions against backend capability profiles.
-- It uses a small transparent scoring model.
-- It returns interpretable recommendations rather than opaque optimizer output.
+1. a Q-Maple workflow specification
+2. backend capability profiles
+3. a simple cost model
 
-## What Q-Maple Is Not
+It returns profile-based placement guidance for each predefined execution region, including a recommended backend, a ranked candidate list, and a short reason.
 
-- It does not solve provider-side scheduling.
-- It does not perform full automatic semantic partitioning.
-- Q-Maple currently operates on workflow specifications with predefined execution regions.
-- Automatic semantic partitioning is out of scope for this initial version.
-- It is not a production control plane or cloud integration layer.
+## Scope And Boundaries
 
-## Current Scope
+| Area | Status | Notes |
+| --- | --- | --- |
+| Explicit region-level specification | In scope | Current input to the prototype |
+| Backend reference profiles | In scope | Stylized profiles for comparative guidance |
+| Placement guidance | In scope | Advisory output, not binding execution decisions |
+| Transparent scoring model | In scope | Small and readable on purpose |
+| Raw workflow ingestion | Out of scope | Not implemented here |
+| Automatic semantic partitioning | Out of scope | Region derivation is not handled by Q-Maple |
+| Upstream partition/decomposition tools | Out of scope | Future upstream source, not part of this repo |
+| Provider scheduling or reservations | Out of scope | Q-Maple is not a scheduler |
+| Real hardware performance prediction | Out of scope | Output is profile-based, not measured truth |
+| User-facing workflow DSL | Out of scope | The JSON examples are serialized specifications, not a DSL |
 
-The current repository is meant to support a positioning paper and early experimentation. It contains one minimal demo, one example workflow, one example backend profile file, and a small smoke test.
+Input assumptions:
 
-## Repository Layout
+- execution regions are predefined
+- annotations are supplied explicitly
+- backend profiles are stylized reference profiles
+- output is comparative and advisory
 
-```text
-qmaple/
-  README.md
-  LICENSE
-  CONTRIBUTING.md
-  CITATION.cff
-  requirements.txt
-  .gitignore
-  docs/
-  examples/
-  qmaple/
-  outputs/
-  tests/
-```
+In a broader toolchain, specifications may be authored manually or produced by workflow systems, C2/Q outputs, or future partition/decomposition tools. Those upstream sources are not implemented in this repository.
 
-Key files:
-
-- `examples/workflow_example.json`: predefined execution regions for a small workflow.
-- `examples/backend_profiles_example.json`: four example backend profiles.
-- `qmaple/placement_engine.py`: ranking and recommendation logic.
-- `qmaple/demo.py`: example entry point.
-- `outputs/sample_result.json`: committed sample output from the demo.
-
-## Example Input
-
-The example workflow contains three regions:
-
-- a compute region
-- a measure-feedback region
-- a scalable-compute region
-
-The example backend file contains four illustrative backend styles:
-
-- `SC` for superconducting
-- `NA` for neutral atom
-- `TI` for trapped ion
-- `PH` for photonic
-
-## Example Output
-
-Running the demo produces a JSON file with one recommendation per region and a ranked candidate list for each region. A shortened example looks like this:
-
-```json
-{
-  "workflow_id": "adaptive_calibration_demo",
-  "recommendations": [
-    {
-      "region_id": "r1_compute",
-      "recommended_backend": "SC",
-      "reason": "SC offers a strong fit for the qubit and depth request and aligns with the preferred grid connectivity."
-    }
-  ]
-}
-```
-
-The example scores and explanations are stylized comparative guidance from reference profiles, not hardware benchmarking or execution measurements.
-
-See `examples/expected_output.md` and `outputs/sample_result.json` for the committed example.
-
-## How To Run The Demo
+## Quick Start
 
 Q-Maple targets Python 3.10+ and currently uses only the Python standard library.
+
+Run the demo:
 
 ```bash
 python -m qmaple.demo
 ```
 
-This command reads the example inputs and writes `outputs/sample_result.json`.
-
-To run the smoke test:
+Run the tests:
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-## Early Prototype Note
+The demo reads the committed example inputs and writes [sample_result.json](/Users/mac/Documents/GitHub/Q-Maple/outputs/sample_result.json).
 
-This is an early research prototype. The code is meant to stay readable and easy to inspect. The repository keeps the scope narrow on purpose.
+## Repository
+
+- `examples/workflow_example.json`: small Q-Maple specification with predefined regions
+- `examples/backend_profiles_example.json`: four reference backend profiles
+- `outputs/sample_result.json`: committed demo output
+- `qmaple/`: loaders, scoring model, placement engine, and demo entry point
+- `docs/`: short project notes and workflow specification description
+- `tests/`: lightweight smoke and unit tests
+
+## Open Source Note
+
+This repository is meant to support a positioning paper and early experimentation. It is intentionally small, dependency-light, and easy to inspect.
+
+Contributions are welcome if they keep the scope narrow and improve clarity, examples, or correctness. See [CONTRIBUTING.md](/Users/mac/Documents/GitHub/Q-Maple/CONTRIBUTING.md) for the short contribution guide.
+
+The repository is released under Apache License 2.0.

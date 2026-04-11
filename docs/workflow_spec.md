@@ -1,10 +1,10 @@
 # Workflow Specification
 
-A workflow specification is the input document that Q-Maple uses to describe a heterogeneous quantum workflow at the region level.
+A Q-Maple workflow specification is the input document that Q-Maple uses to describe a heterogeneous workflow at the region level. In the current prototype, this specification serves as a lightweight, placement-oriented intermediate representation rather than a user-facing workflow DSL.
 
 ## Execution Regions
 
-An execution region is a part of the workflow that is treated as a placement unit. In this repository, each region has:
+An execution region is a placement unit within the modeled workflow. In this repository, each region has:
 
 - an `id`
 - a short `label`
@@ -32,3 +32,14 @@ The current prototype does not require a large ontology. The annotations are del
 Q-Maple assumes that execution regions are already given in the workflow specification. They may be manually defined by the workflow author or provided by another tool. They are not automatically discovered by this repository.
 
 That boundary matters. Q-Maple is about placement guidance over regions, not automatic semantic partitioning of quantum programs.
+
+## Upstream Sources
+
+The current repository starts from the Q-Maple specification itself. In a broader toolchain, such specifications could come from:
+
+- manual authoring
+- workflow systems
+- C2/Q outputs
+- future partition or decomposition tools
+
+Those upstream sources are not implemented here. This prototype focuses on the explicit input representation and the downstream placement-guidance logic.

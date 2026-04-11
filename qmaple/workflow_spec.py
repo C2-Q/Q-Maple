@@ -1,4 +1,4 @@
-"""Workflow specification loading and lightweight validation."""
+"""Q-Maple workflow specification loading and lightweight validation."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ ALLOWED_SCALABILITY = {"low", "medium", "high"}
 
 @dataclass(frozen=True)
 class WorkflowRegion:
-    """A predefined execution region in a workflow."""
+    """A predefined execution region in a Q-Maple specification."""
 
     id: str
     label: str
@@ -33,7 +33,7 @@ class WorkflowRegion:
 
 @dataclass(frozen=True)
 class WorkflowSpec:
-    """A workflow-level container for execution regions."""
+    """A placement-oriented specification container for execution regions."""
 
     workflow_id: str
     description: str
@@ -42,14 +42,14 @@ class WorkflowSpec:
 
 
 def load_workflow_spec(path: str | Path) -> WorkflowSpec:
-    """Load a workflow specification from JSON."""
+    """Load a Q-Maple workflow specification from JSON."""
 
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     return parse_workflow_spec(data)
 
 
 def parse_workflow_spec(data: dict[str, Any]) -> WorkflowSpec:
-    """Validate and convert raw workflow data."""
+    """Validate and convert raw Q-Maple specification data."""
 
     if not isinstance(data, dict):
         raise ValueError("Workflow specification must be a JSON object.")

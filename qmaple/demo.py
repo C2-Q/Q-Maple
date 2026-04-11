@@ -21,7 +21,7 @@ def run_demo(
     output_path: Path | None = None,
     emit_summary: bool = True,
 ) -> dict[str, Any]:
-    """Run the example placement flow and write the result JSON."""
+    """Run the example placement flow from the committed Q-Maple specification."""
 
     workflow = load_workflow_spec(workflow_path or EXAMPLES_DIR / "workflow_example.json")
     backends = load_backend_profiles(backend_path or EXAMPLES_DIR / "backend_profiles_example.json")
@@ -38,7 +38,7 @@ def run_demo(
 
 def _print_summary(result: dict[str, Any]) -> None:
     print("Q-Maple demo")
-    print(f"Workflow: {result['workflow_id']}")
+    print(f"Specification: {result['workflow_id']}")
     print("Recommendations:")
     for recommendation in result["recommendations"]:
         print(

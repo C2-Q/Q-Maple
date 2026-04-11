@@ -1,4 +1,4 @@
-"""Placement guidance over predefined workflow regions."""
+"""Placement guidance over predefined regions in a Q-Maple specification."""
 
 from __future__ import annotations
 
@@ -47,7 +47,8 @@ def generate_placement_guidance(
         "workflow_id": workflow.workflow_id,
         "description": workflow.description,
         "assumptions": [
-            "Execution regions are assumed to be predefined in the workflow specification.",
+            "Execution regions are assumed to be explicitly specified in the Q-Maple workflow specification.",
+            "This prototype consumes a placement-oriented specification rather than deriving regions from raw workflows.",
             "Scores are comparative guidance from stylized profiles, not provider-side schedules, reservations, or execution measurements.",
         ],
         "recommendations": recommendations,

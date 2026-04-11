@@ -4,7 +4,7 @@ title: "Q-Maple: Capability-Driven Placement Guidance for Heterogeneous Quantum 
 type: software
 version: 0.1.0
 date-released: 2026-04-10
-license: MIT
+license: Apache-2.0
 authors:
   - family-names: "Ye"
     given-names: "Bossy"

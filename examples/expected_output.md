@@ -2,6 +2,8 @@
 
 Running `python -m qmaple.demo` should print a short summary and write `outputs/sample_result.json`.
 
+The demo consumes the committed Q-Maple specification and backend profile examples. It does not derive regions from a raw workflow.
+
 For the committed example data, the intended recommendations are:
 
 - `r1_compute` -> `SC`
